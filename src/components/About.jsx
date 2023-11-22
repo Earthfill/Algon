@@ -27,7 +27,7 @@ const About = () => {
           <span className="text-red text-4xl"><FaCheck /></span>
           <span className="justify-start">Shows the vehicles registration status</span>
         </div>
-        <div className="flex xl:justify-center items-start  gap-4 text-slate-600 pt-7">
+        <div className="flex xl:justify-center items-start  gap-4 text-slate-600 pt-7 pb-20">
           <span className="text-red text-4xl"><GiSandsOfTime /></span>
           <span className="justify-start">Works 24 hours a day, 7 days a week. Even on holidays!</span>
         </div>
