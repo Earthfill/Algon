@@ -17,6 +17,7 @@ export default {
         "light-gray": "#F7F7F7",
         "royal-red": "#B92626",
         "pale-red": "#EB8383",
+        "light-red": "#FFF6F6",
         "half-transparent": "rgba(0, 0, 0, 0.5)",
       },
       width: {

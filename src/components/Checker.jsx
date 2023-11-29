@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Checker = () => {
   return (
@@ -9,7 +10,7 @@ const Checker = () => {
         <div className="xl:w-[600px] xl:mx-auto rounded-md mt-20 mx-14 bg-pale-red">
           <form action="" className="xl:p-10 p-6 flex flex-col gap-6">
             <input placeholder="ENTER REGISTRATION NUMBER" className="xl:outline-none xl:pl-2 rounded-md py-2 text-black placeholder:text-slate-500 placeholder:text-sm placeholder:font-bolder placeholder:text-center outline-orange-400 px-2" />
-            <button className="xl:cursor-pointer hover:scale-105 hover:transform transition:transform duration-300 flex justify-center bg-green-700 rounded-md font-extrabold p-2"> <FaSearch /></button>
+            <Link to='/details' className="xl:cursor-pointer hover:scale-105 hover:transform transition:transform duration-300 flex justify-center bg-green-700 rounded-md font-extrabold p-2"> <FaSearch /></Link>
           </form>
         </div>
       </div>
