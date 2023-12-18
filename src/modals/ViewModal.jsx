@@ -28,15 +28,19 @@ const ViewModal = ({ isOpen, onRequestClose, children }) => {
       }}
       contentLabel=""
     >
-      <div>
-        <button 
-          className="rounded-md p-1 px-2 mb-3 bg-red text-sm text-white font-bold hover:transform hover:scale-125 transition-transform duration-100 fixed bottom-0 right-28 z-50" 
-          onClick={onRequestClose}
-        >
-          CLOSE
-        </button>
+      <div className="flex gap-4 flex-col items-center justify-center h-full">
+        <div>
+          {children}
+        </div>
+        <div>
+          <button 
+            className="rounded-md p-1 px-2 bg-red text-sm text-white font-bold hover:scale-105 hover:transform transition-transform duration-300" 
+            onClick={onRequestClose}
+          >
+            CLOSE
+          </button>
+        </div>
       </div>
-      {children}
     </Modal>
   )
 }
