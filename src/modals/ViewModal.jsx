@@ -34,7 +34,7 @@ const ViewModal = ({ isOpen, onRequestClose, children }) => {
         </div>
         <div>
           <button 
-            className="rounded-md p-1 px-2 bg-red text-sm text-white font-bold hover:scale-105 hover:transform transition-transform duration-300" 
+            className="rounded-md p-1 px-2 bg-red text-sm text-white font-bold hover:scale-105 hover:transform transition:transform duration-300" 
             onClick={onRequestClose}
           >
             CLOSE

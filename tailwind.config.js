@@ -20,6 +20,9 @@ export default {
         "light-red": "#FFF6F6",
         "half-transparent": "rgba(0, 0, 0, 0.5)",
       },
+      backgroundImage: {
+        "card": "linear-gradient(90deg, #B92626 50%, #921313 100%)",
+      },
       width: {
         400: "400px",
         760: "760px",
