@@ -39,9 +39,16 @@ const Certificates = ({ name, open, price, status, add }) => {
   );
 }
 
-const Licenses = ({ license, open, price, status }) => {
+const Licenses = ({ license, open, price, status, add }) => {
+  const [isAdded, setIsAdded] = useState(false);
+
   if (!license) {
     return null;
+  }
+
+  const handleAddToCart = () => {
+    add({ license, price, status });
+    setIsAdded(true);
   }
 
   return (
@@ -49,21 +56,33 @@ const Licenses = ({ license, open, price, status }) => {
       <div className="flex justify-between py-3 lg:pb-10">
         <div className="flex gap-2">
           <div className="pl-3 text-white text-lg"><TbLicense /></div>
-          <div className="text-white text-sm pr-4">{license}</div>
+          <div className="flex items-start text-white text-sm pr-4">{license}</div>
         </div>
         <div className={`pr-3 ${status ? 'text-green-700' : 'text-white'}`}>{status ? <ImCheckboxChecked /> : <MdCancel />}</div>
       </div>
-      <div onClick={() => open()} className="flex gap-3 justify-between text-xs text-white px-4 py-3 lg:pr-7">
+      <div className="flex gap-3 justify-between text-xs text-white px-4 py-3 lg:pr-7">
         <div>&#8358; {price}</div>
-        <div>View doc &gt;</div>
+        {!status && 
+          <div onClick={isAdded ? null : handleAddToCart}>
+            {isAdded ? "Added!" : "Add To Cart"}
+          </div>
+        }
+        <div onClick={() => open()}>View doc &gt;</div>
       </div>
     </div>
   );
 }
 
-const Clearances = ({ permit, open, price, status }) => {
+const Clearances = ({ permit, open, price, status, add }) => {
+  const [isAdded, setIsAdded] = useState(false);
+
   if (!permit) {
     return null;
+  }
+
+  const handleAddToCart = () => {
+    add({ permit, price, status });
+    setIsAdded(true);
   }
 
   return (
@@ -75,9 +94,14 @@ const Clearances = ({ permit, open, price, status }) => {
         </div>
         <div className={`pr-3 ${status ? 'text-green-700' : 'text-white'}`}>{status ? <ImCheckboxChecked /> : <MdCancel />}</div>
       </div>
-      <div onClick={() => open()} className="flex gap-3 justify-between text-xs text-white px-4 py-3 lg:pr-7">
+      <div className="flex gap-3 justify-between text-xs text-white px-4 py-3 lg:pr-7">
         <div>&#8358; {price}</div>
-        <div>View doc &gt;</div>
+        {!status && 
+          <div onClick={isAdded ? null : handleAddToCart}>
+            {isAdded ? "Added!" : "Add To Cart"}
+          </div>
+        }
+        <div onClick={() => open()}>View doc &gt;</div>
       </div>
     </div>
   );
@@ -97,13 +121,15 @@ const Card = ({ open, name, license, permit, price, status, addToCart }) => {
         open={open} 
         license={license} 
         price={price} 
-        status={status} 
+        status={status}
+        add={addToCart} 
       />
       <Clearances 
         open={open} 
         permit={permit}
         price={price} 
-        status={status} 
+        status={status}
+        add={addToCart} 
       />
     </div>
   )

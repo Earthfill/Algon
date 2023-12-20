@@ -35,7 +35,7 @@ const Details = () => {
 
   const addToCart = (item) => {
     setCart([...cart, item]);
-    console.log(item);
+    console.log(cart);
   };
 
   const filteredCertificates = certificateData.filter((certificate) => {
