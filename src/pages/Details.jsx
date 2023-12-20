@@ -25,6 +25,7 @@ const Details = () => {
 
   const handleStatusFilter = () => {
     setSelectedStatus(!selectedStatus);
+    setFilter(!filter);
   };
 
   const handleClearFilter = () => {
