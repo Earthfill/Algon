@@ -3,13 +3,14 @@ import { certificateData } from "../data/cerificateData";
 import Card from "../components/Card";
 import ViewModal from "../modals/ViewModal";
 import { FaFilter } from "react-icons/fa";
-import { ImCancelCircle } from "react-icons/im";
+import { ImCancelCircle, ImCart } from "react-icons/im";
 
 const Details = () => {
   const [modalViewIsOpen, setModalViewIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [filter, setFilter] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(null);
+  const [cart, setCart] = useState([]);
 
   const openViewModal = () => {
     setModalViewIsOpen(true);
@@ -32,6 +33,11 @@ const Details = () => {
     setSelectedStatus(null);
   };
 
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    console.log(item);
+  };
+
   const filteredCertificates = certificateData.filter((certificate) => {
     const lowerSearchInput = searchInput.toLowerCase();
     const lowerName = certificate.name?.toLowerCase() || '';
@@ -51,7 +57,18 @@ const Details = () => {
   return (
     <div className="xl:flex xl:justify-center xl:pl-32 2xl:pl-96 overflow-hidden">
       <div className="pl-6 py-4">
-        <div className="text-xl text-red font-bold">Vehicle Documents</div>
+        <div className="flex items-center justify-between">
+          <div className="text-xl text-red font-bold">Vehicle Documents</div>
+          <div className="pr-9">
+            <h2><ImCart /></h2>
+            {/* {cart.map((item, index) => (
+              <div key={index}>
+                <div>{item.count}</div>
+              </div>
+            ))} */}
+            <div className="absolute top-4 right-6 bg-red text-white rounded-full text-[10px] px-1">{cart.length}</div>
+          </div>  
+        </div>
         <div className="flex gap-3 py-5">
           <div>
             <input 
@@ -62,7 +79,7 @@ const Details = () => {
             />
           </div>
           <div className="flex items-center cursor-pointer">
-            <div onClick={() => setFilter(!filter)}>
+            <div className="text-red" onClick={() => setFilter(!filter)}>
               <FaFilter />
             </div>
             {filter && 
@@ -84,6 +101,7 @@ const Details = () => {
             permit={certificate.permit} 
             price={certificate.price}
             status={certificate.registered}
+            addToCart={addToCart}
           />
         ))}
         <ViewModal
@@ -102,6 +120,7 @@ const Details = () => {
           <div>Clear Filter</div>
         </div>
       }
+
     </div>
   )
 }
