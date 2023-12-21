@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { certificateData } from "../data/cerificateData";
 import Card from "../components/Card";
 import ViewModal from "../modals/ViewModal";
 import { FaFilter } from "react-icons/fa";
 import { ImCancelCircle, ImCart } from "react-icons/im";
+import { Link, useNavigate } from "react-router-dom";
+import { MdClear } from "react-icons/md";
 
 const Details = () => {
   const [modalViewIsOpen, setModalViewIsOpen] = useState(false);
@@ -11,6 +13,11 @@ const Details = () => {
   const [filter, setFilter] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
 
   const openViewModal = () => {
     setModalViewIsOpen(true);
@@ -34,8 +41,24 @@ const Details = () => {
   };
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
-    console.log(cart);
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    if (cart.length > 0) {
+      navigate('/cart', {
+        state: {
+          cart: cart,
+          name: cart.name,
+          price: cart.price,
+          status: cart.status
+        },
+      });  
+    }
   };
 
   const filteredCertificates = certificateData.filter((certificate) => {
@@ -57,19 +80,21 @@ const Details = () => {
   return (
     <div className="xl:flex xl:justify-center xl:pl-32 2xl:pl-96 overflow-hidden">
       <div className="pl-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="fixed -top-1 left-2 w-full bg-white p-4 flex items-center justify-between z-50">
           <div className="text-xl text-red font-bold">Vehicle Documents</div>
-          <div className="pr-9">
-            <h2><ImCart /></h2>
-            {/* {cart.map((item, index) => (
-              <div key={index}>
-                <div>{item.count}</div>
-              </div>
-            ))} */}
-            <div className="absolute top-4 right-6 bg-red text-white rounded-full text-[10px] px-1">{cart.length}</div>
-          </div>  
+          <Link to='/cart'>
+            <button onClick={handleCart}>
+              <div className="pr-6 rounded-full"><ImCart /></div>
+              {/* {cart.map((item, index) => (
+                <div key={index}>
+                  <div>{item.count}</div>
+                </div>
+              ))} */} 
+              <div className="absolute top-4 right-8 bg-red text-white rounded-full text-[10px] px-1">{cart.length}</div>
+            </button>
+          </Link>
         </div>
-        <div className="flex gap-3 py-5">
+        <div className="flex gap-3 pt-12 pb-6">
           <div>
             <input 
               className="border h-10 w-[280px] md:w-[450px] lg:w-[360px] 2xl:w-[730px] px-5 rounded-3xl focus:outline-none" 
@@ -77,6 +102,14 @@ const Details = () => {
               value={searchInput}
               onChange={handleSearchInputChange}
             />
+            {searchInput && (
+              <button
+                className="absolute top-12 right-16 mt-7 mr-2 text-gray-400 cursor-pointer"
+                onClick={() => setSearchInput("")}
+              >
+                <MdClear />
+              </button>
+            )}
           </div>
           <div className="flex items-center cursor-pointer">
             <div className="text-red" onClick={() => setFilter(!filter)}>
