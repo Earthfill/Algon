@@ -20,11 +20,11 @@ const Cart = () => {
         <div className="font-bold">My Cart</div>
         <div className="text-gray-400">&#40;{cart.length}&#41;</div>
         <div className="border rounded-xl absolute right-6 p-2 text-white bg-royal-red flex gap-2 items-center">
-        <div className="flex items-center gap-3 hover:scale-105 hover:transform transition:transform duration-300">
-          <button className="font-bold">Checkout</button>
-          <FaLongArrowAltRight />
+          <div className="flex items-center gap-3 hover:scale-105 hover:transform transition:transform duration-300">
+            <button className="font-bold">Checkout</button>
+            <FaLongArrowAltRight />
+          </div>
         </div>
-      </div>
       </div>
       <CartItems cart={cart} />
     </div>
