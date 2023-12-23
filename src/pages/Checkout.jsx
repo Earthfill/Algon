@@ -50,6 +50,15 @@ const Checkout = () => {
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
+          <div className="text-gray-400 text-sm pt-4">Expiry Date</div>
+          <input
+            name="expiry"
+            placeholder="MM/YY"
+            value={state.expiry}
+            className="border-b outline-none w-10/12 pt-1"
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
           <div className="text-gray-400 text-sm pt-4">CVC</div>
           <input
             name="cvc"
