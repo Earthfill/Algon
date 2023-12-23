@@ -42,6 +42,15 @@ const Checkout = () => {
           focused={state.focus}
         />
         <form className="pt-3">
+          <div className="text-gray-400 text-sm pt-4">Card Holder</div>
+          <input
+            name="name"
+            value={state.name}
+            className="border-b outline-none w-10/12 pt-1"
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+            autoComplete="cc-name" // Add this attribute
+          />
           <div className="text-gray-400 text-sm pt-4">Card Number</div>
           <input
             name="number"
