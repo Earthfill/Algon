@@ -12,6 +12,17 @@ const Cart = () => {
   const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
 
   const cart = [...storedCart, ...cartFromQuery];
+  
+  const total = cart.reduce((accumulator, item) => accumulator + parseFloat(item.price), 0);
+
+  const handlePrice = () => {
+    
+    navigate('/checkout', {
+      state: {
+        total: total
+      },
+    });
+  };
 
   return (
     <div className="p-6">
@@ -21,7 +32,7 @@ const Cart = () => {
         <div className="text-gray-400">&#40;{cart.length}&#41;</div>
         <div className="border rounded-xl absolute right-6 p-2 text-white bg-royal-red flex gap-2 items-center">
           <Link to='/checkout' className="flex items-center gap-3 hover:scale-105 hover:transform transition:transform duration-300">
-            <button className="font-bold">Checkout</button>
+            <button onClick={handlePrice} className="font-bold">Checkout</button>
             <FaLongArrowAltRight />
           </Link>
         </div>

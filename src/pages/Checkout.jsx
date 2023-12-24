@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
+import { MdClear } from "react-icons/md";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const total = location.state?.total || 0;
   const [state, setState] = useState({
     number: '',
     expiry: '',
@@ -17,7 +22,7 @@ const Checkout = () => {
     if (name === 'number' && (!/^\d*$/.test(value) || value.length > 16)) {
       return;
     }
-    
+      
     setState((prev) => ({ ...prev, [name]: value }));
   }
 
@@ -27,10 +32,13 @@ const Checkout = () => {
 
   return (
     <div className="p-6">
-      <div className="text-red font-bold text-3xl">Payment</div>
+      <div className="flex items-center justify-between text-red font-bold text-xl">
+        <div>Payment</div>
+        <div onClick={() => navigate(-1)} className="text-gray-400 bg-white rounded-full"><MdClear /></div>
+      </div>
       <div className="border rounded-lg shadow flex justify-between items-center text-red mt-6 p-4">
         <div className="font-medium">TOTAL</div>
-        <div className="font-semibold">&#8358;</div>
+        <div className="font-semibold">&#8358; {total}</div>
       </div>
       <div></div>
       <div className="pt-6">
@@ -42,7 +50,7 @@ const Checkout = () => {
           focused={state.focus}
         />
         <form className="pt-3">
-          <div className="text-gray-400 text-sm pt-4">Card Holder</div>
+          <div className="text-red text-sm pt-4">Card Holder</div>
           <input
             name="name"
             value={state.name}
@@ -51,7 +59,7 @@ const Checkout = () => {
             onFocus={handleInputFocus}
             autoComplete="cc-name" // Add this attribute
           />
-          <div className="text-gray-400 text-sm pt-4">Card Number</div>
+          <div className="text-red text-sm pt-4">Card Number</div>
           <input
             name="number"
             value={state.number}
@@ -59,7 +67,7 @@ const Checkout = () => {
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
-          <div className="text-gray-400 text-sm pt-4">Expiry Date</div>
+          <div className="text-red text-sm pt-4">Expiry Date</div>
           <input
             name="expiry"
             placeholder="MM/YY"
@@ -68,7 +76,7 @@ const Checkout = () => {
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
-          <div className="text-gray-400 text-sm pt-4">CVC</div>
+          <div className="text-red text-sm pt-4">CVC</div>
           <input
             name="cvc"
             placeholder="CVC"

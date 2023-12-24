@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { TbLicense } from "react-icons/tb";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
@@ -7,6 +7,13 @@ import { MdCancel } from "react-icons/md";
 
 const Certificates = ({ name, open, price, status, add }) => {
   const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem(name);
+    if (storedData) {
+      setIsAdded(true);
+    }
+  }, [name]);
 
   if (!name) {
     return null;

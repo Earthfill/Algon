@@ -1,5 +1,5 @@
 const CartItems = ({ cart }) => {
-  const maxLength = 20; // Set your desired maximum length
+  const maxLength = 20;
 
   const truncateName = (name) => {
     return name.length > maxLength ? `${name.slice(0, maxLength)}...` : name;
