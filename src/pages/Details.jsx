@@ -78,26 +78,26 @@ const Details = () => {
   });
 
   return (
-    <div className="xl:flex xl:justify-center xl:pl-32 2xl:pl-96 overflow-hidden">
-      <div className="pl-6 py-4">
+    <div className="xl:flex xl:justify-center xl:pl-36 2xl:pl-96 overflow-hidden">
+      <div className="pl-6 py-4 xl:px-48">
         <div className="fixed -top-1 left-2 w-full bg-white p-4 flex items-center justify-between z-50">
-          <div className="text-xl text-red font-bold">Vehicle Documents</div>
+          <div className="text-xl xl:pl-80 2xl:ml-56 text-red font-bold">Vehicle Documents</div>
           <Link to='/cart'>
             <button onClick={handleCart}>
-              <div className="pr-6 rounded-full"><ImCart /></div>
+              <div className="pr-6 xl:pr-80 2xl:mr-64 rounded-full"><ImCart /></div>
               {/* {cart.map((item, index) => (
                 <div key={index}>
                   <div>{item.count}</div>
                 </div>
               ))} */} 
-              <div className="absolute top-4 right-8 bg-red text-white rounded-full text-[10px] px-1">{cart.length}</div>
+              <div className="absolute top-4 right-8 xl:right-80 2xl:right-96 bg-red text-white rounded-full text-[10px] px-1 xl:mr-2 2xl:mr-48">{cart.length}</div>
             </button>
           </Link>
         </div>
         <div className="flex gap-3 pt-12 pb-6">
           <div>
             <input 
-              className="border h-10 w-[280px] md:w-[450px] lg:w-[360px] 2xl:w-[730px] px-5 rounded-3xl focus:outline-none" 
+              className="border h-10 xl:w-[595px] w-[280px] md:w-[450px] lg:w-[360px] 2xl:w-[730px] px-5 rounded-3xl focus:outline-none" 
               placeholder="Search for certificates"
               value={searchInput}
               onChange={handleSearchInputChange}

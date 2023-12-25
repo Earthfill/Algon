@@ -31,14 +31,14 @@ const Checkout = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 xl:pl-80 2xl:ml-60 xl:px-80 xl:mr-2 2xl:mr-64">
       <div className="flex items-center justify-between text-red font-bold text-xl">
         <div>Payment</div>
         <div onClick={() => navigate(-1)} className="text-gray-400 bg-white rounded-full"><MdClear /></div>
       </div>
-      <div className="border rounded-lg shadow flex justify-between items-center text-red mt-6 p-4">
+      <div className="rounded-lg shadow flex justify-between items-center bg-royal-red text-white mt-6 p-4">
         <div className="font-medium">TOTAL</div>
-        <div className="font-semibold">&#8358; {total}</div>
+        <div className="font-semibold">&#8358; {total}.00</div>
       </div>
       <div></div>
       <div className="pt-6">
@@ -54,7 +54,7 @@ const Checkout = () => {
           <input
             name="name"
             value={state.name}
-            className="border-b outline-none w-10/12 pt-1"
+            className="border-b border-red outline-none w-full pt-1"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
             autoComplete="cc-name" // Add this attribute
@@ -63,7 +63,7 @@ const Checkout = () => {
           <input
             name="number"
             value={state.number}
-            className="border-b outline-none w-10/12 pt-1"
+            className="border-b border-red outline-none w-full pt-1"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
@@ -72,7 +72,7 @@ const Checkout = () => {
             name="expiry"
             placeholder="MM/YY"
             value={state.expiry}
-            className="border-b outline-none w-10/12 pt-1"
+            className="border-b border-red outline-none w-full pt-1"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
@@ -81,7 +81,7 @@ const Checkout = () => {
             name="cvc"
             placeholder="CVC"
             value={state.cvc}
-            className="border-b outline-none w-10/12 pt-1"
+            className="border-b border-red outline-none w-full pt-1"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />

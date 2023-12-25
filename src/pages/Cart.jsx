@@ -24,13 +24,18 @@ const Cart = () => {
     });
   };
 
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className="p-6">
-      <div className="flex gap-3 items-center pb-5">
-        <button onClick={() => navigate(-1)} className="border rounded-full p-2"><ImArrowLeft2 /></button>
+    <div className="p-6 xl:pl-80 2xl:ml-60 xl:px-80">
+      <div className="fixed -top-1 left-3 z-50 2xl:pl-64 w-full bg-white p-4 flex gap-3 items-center pb-5">
+        <div onClick={handleBack} className="border rounded-full p-2 xl:ml-72 cursor-pointer"><ImArrowLeft2 /></div>
         <div className="font-bold">My Cart</div>
         <div className="text-gray-400">&#40;{cart.length}&#41;</div>
-        <div className="border rounded-xl absolute right-6 p-2 text-white bg-royal-red flex gap-2 items-center">
+        <div className="border rounded-xl absolute right-8 xl:right-80 xl:mr-2 2xl:mr-64 p-2 text-white bg-royal-red flex gap-2 items-center">
           <Link to='/checkout' className="flex items-center gap-3 hover:scale-105 hover:transform transition:transform duration-300">
             <button onClick={handlePrice} className="font-bold">Checkout</button>
             <FaLongArrowAltRight />
