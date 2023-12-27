@@ -104,7 +104,7 @@ const Clearances = ({ permit, open, price, status, add }) => {
       <div className="flex gap-3 justify-between text-xs text-white px-4 py-3 lg:pr-7">
         <div>&#8358; {price}</div>
         {!status && 
-          <div onClick={isAdded ? null : handleAddToCart}>
+          <div className="cursor-pointer" onClick={isAdded ? null : handleAddToCart}>
             {isAdded ? "Added!" : "Add To Cart"}
           </div>
         }

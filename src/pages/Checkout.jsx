@@ -34,7 +34,7 @@ const Checkout = () => {
     <div className="p-6 xl:pl-80 2xl:ml-60 xl:px-80 xl:mr-2 2xl:mr-64">
       <div className="flex items-center justify-between text-red font-bold text-xl">
         <div>Payment</div>
-        <div onClick={() => navigate(-1)} className="text-gray-400 bg-white rounded-full"><MdClear /></div>
+        <div onClick={() => navigate(-1)} className="text-gray-400 bg-white rounded-full cursor-pointer"><MdClear /></div>
       </div>
       <div className="rounded-lg shadow flex justify-between items-center bg-royal-red text-white mt-6 p-4">
         <div className="font-medium">TOTAL</div>
